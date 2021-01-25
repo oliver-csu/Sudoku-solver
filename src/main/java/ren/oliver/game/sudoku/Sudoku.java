@@ -1,4 +1,4 @@
-package myPackage;
+package ren.oliver.game.sudoku;
 
 public class Sudoku {
 	private int[][][] demo = new int[10][10][10];

@@ -1,4 +1,4 @@
-package myPackage;
+package ren.oliver.game.sudoku;
 
 
 public class Solver {

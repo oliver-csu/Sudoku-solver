@@ -1,4 +1,4 @@
-package myPackage;
+package ren.oliver.game.sudoku;
 
 public class Copy1To2 {
 	public Copy1To2(int[][][] form1,int[][][] form2){
