@@ -2,7 +2,7 @@ package ren.oliver.game.sudoku;
 
 import java.util.Scanner;
 
-public class myClass {
+public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

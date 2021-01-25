@@ -7,7 +7,6 @@ public class Sudoku {
 
 	public Sudoku(int[][][] formIn){
 		new Copy1To2(formIn, demo);
-		
 	}
 	
 	public Sudoku(){
