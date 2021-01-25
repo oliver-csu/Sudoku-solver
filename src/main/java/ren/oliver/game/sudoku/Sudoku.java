@@ -1,8 +1,10 @@
 package ren.oliver.game.sudoku;
 
 public class Sudoku {
+
 	private int[][][] demo = new int[10][10][10];
 	boolean outCome = true;
+
 	public Sudoku(int[][][] formIn){
 		new Copy1To2(formIn, demo);
 		
@@ -18,108 +20,122 @@ public class Sudoku {
 			}
 		}
 	}
-	
-	
+
 	public boolean check(){
 		clean();
-
 		checkA();
-
 		checkB();
-
 		return outCome;
 	}
 	
 	public int[][][] getShuDu(){
 		return demo;
 	}
-	
-	
+
 	private void checkA() {
 		// TODO 若空格处不可能是任何数，判定题目出错
-		for(int i=1;i<10;i++){
-	        for(int j=1;j<10;j++){
-	            if(demo[i][j][0]==0){
-	                int temp=0;//累加计数器
+		for(int i=1; i<10; i++) {
+	        for(int j=1; j<10; j++) {
+	            if(demo[i][j][0]==0) {
+					//累加计数器
+	                int temp=0;
 	                for(int k=1;k<10;k++){
-	                    if(demo[i][j][k]!=0)temp++;
+	                    if(demo[i][j][k]!=0) {
+							temp++;
+						}
 	                }
-	                if(temp==0)outCome=false;
+	                if(temp==0) {
+						outCome=false;
+					}
 	            }
 	        }
 	    }
 	}
 	private void checkB() {
-		//N不在这一行/列/块 且本行/列/块其他处不可能有N，判定题目出错
-	    //扩充了else语句，判定某行/列/块数字n重复出现
-		for(int n=1;n<10;n++){
-	        for(int i=1;i<10;i++){
-	            if(nIsInThisLine(n,i)==false){
-	                int temp=0;
-	                for(int j=1;j<10;j++){
-	                    if(demo[i][j][n]!=0)temp++;
+		// N不在这一行/列/块 且本行/列/块其他处不可能有N，判定题目出错
+	    // 扩充了else语句，判定某行/列/块数字n重复出现
+		for(int n=1; n<10; n++) {
+	        for(int i=1; i<10; i++) {
+	            if(nIsInThisLine(n,i) == false) {
+	                int temp = 0;
+	                for(int j=1; j<10; j++){
+	                    if(demo[i][j][n] != 0) {
+							temp++;
+						}
 	                }
-
-	                if(temp==0)outCome=false;
-
-	            }
-
-	            else{
-	            	int temp=0;
-	                for(int j=1;j<10;j++){
-	                    if(demo[i][j][0]==n)temp++;
+	                if(temp == 0) {
+						outCome=false;
+					}
+	            } else {
+	            	int temp = 0;
+	                for(int j=1; j<10; j++){
+	                    if(demo[i][j][0] == n) {
+							temp++;
+						}
 	                }
-
-	                if(temp>1)outCome=false;
-
-	            }
-	            
-	            
-	        }
-
-	        for(int j=1;j<10;j++){
-	            if(nIsInThisColumn(n,j)==false){
-	                int temp=0;
-	                for(int i=1;i<10;i++){
-	                    if(demo[i][j][n]!=0)temp++;
-	                }
-	                if(temp==0)outCome=false;
-	            }
-	            else{
-	            	int temp=0;
-	                for(int i=1;i<10;i++){
-	                    if(demo[i][j][0]==n)temp++;
-	                }
-	                if(temp>1)outCome=false;
+	                if(temp > 1) {
+	                	outCome=false;
+					}
 	            }
 	        }
 
-	        for(int N=0;N<3;N++){
-	            for(int M=0;M<3;M++){
+	        for(int j=1; j<10; j++){
+	            if(nIsInThisColumn(n,j) == false ){
+	                int temp = 0;
+	                for(int i=1; i<10; i++){
+	                    if(demo[i][j][n] != 0) {
+	                    	temp++;
+						}
+	                }
+	                if(temp == 0) {
+	                	outCome=false;
+					}
+	            } else{
+	            	int temp = 0;
+	                for(int i = 1; i<10; i++){
+	                    if(demo[i][j][0] == n) {
+	                    	temp++;
+						}
+	                }
+	                if(temp > 1) {
+	                	outCome=false;
+					}
+	            }
+	        }
+	        for(int N = 0; N < 3; N++) {
+	            for(int M = 0; M < 3; M++) {
 	                if(nIsInThisCube(n,N,M)==false){
-	                    int temp=0;
-	                    for(int i=1;i<4;i++){
-	                        for(int j=1;j<4;j++){
-	                            if(demo[N*3+i][M*3+j][n]!=0)temp++;
+	                    int temp = 0;
+	                    for(int i = 1; i < 4; i++){
+	                        for(int j = 1; j < 4; j++){
+	                            if(demo[N*3+i][M*3+j][n] != 0) {
+	                            	temp++;
+								}
 	                        }
 	                    }
-	                    if(temp==0)outCome=false;
+	                    if(temp == 0) {
+	                    	outCome = false;
+						}
 	                }
 	                else{
-	                	int temp=0;
-	                    for(int i=1;i<4;i++){
-	                        for(int j=1;j<4;j++){
-	                            if(demo[N*3+i][M*3+j][0]==n)temp++;
+	                	int temp = 0;
+	                    for(int i = 1; i < 4; i++) {
+	                        for(int j = 1; j < 4; j++) {
+	                            if(demo[N*3+i][M*3+j][0] == n) {
+	                            	temp++;
+								}
 	                        }
 	                    }
-	                    if(temp>10)outCome=false;
+	                    if(temp > 10) {
+	                    	outCome=false;
+						}
 	                }
 	            }
 	        }
 	    }
 	}
 
-	public void printInfo(){
+	public void printInfo() {
 		System.out.println("┌───────┬───────┬───────┐");
 		for(int i=1;i<10;i++){
 			System.out.print("│ ");
