@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="sudoku-solver" />
+        <module name="Sudoku-solver" />
       </profile>
     </annotationProcessing>
   </component>

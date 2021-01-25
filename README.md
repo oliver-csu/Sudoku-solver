@@ -1,8 +1,8 @@
 * 数独求解器
 
-[[./images/Sudoku.png]]
+![Sudoku.png](images/Sudoku.png)
 
-[[./images/Sudoku2.png]]
+![Sudoku2.png](images/Sudoku2.png)
 
 * 这段代码可以做什么？
 
